@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Example HTML Email Template</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			line-height: 1.5;
+			color: #333333;
+			background-color: #F5F5F5;
+		}
+		h1, h2, h3, h4, h5, h6 {
+			font-family: Arial, sans-serif;
+			font-weight: bold;
+			color: #333333;
+			margin: 0;
+			padding: 0;
+		}
+		a {
+			color: #0070d2;
+			text-decoration: none;
+		}
+		p {
+			margin: 0 0 10px;
+			padding: 0;
+		}
+		.container {
+			max-width: 600px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #ffffff;
+			border: 1px solid #cccccc;
+		}
+		.header {
+			padding: 10px;
+			background-color: #0070d2;
+			color: #ffffff;
+			text-align: center;
+		}
+		.footer {
+			padding: 10px;
+			background-color: #cccccc;
+			color: #333333;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h1>Example HTML Email Template</h1>
+		</div>
+		<p>Dear {{Recipient.Name}},</p>
+		<p>We are pleased to inform you that your order has been shipped. Here are the details:</p>
+		<ul>
+			<li>Order number: {{Recipient.OrderNumber}}</li>
+			<li>Tracking number: {{Recipient.TrackingNumber}}</li>
+			<li>Estimated delivery date: {{Recipient.EstimatedDeliveryDate}}</li>
+		</ul>
+		<p>Thank you for your business.</p>
+		<div class="footer">
+			<p>This email was sent by Example Company. To unsubscribe, click <a href="{{Recipient.UnsubscribeLink}}">here</a>.</p>
+		</div>
+	</div>
+</body>
+</html>
