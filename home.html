@@ -14,10 +14,69 @@
             background-color: #f0740e;
             padding: 4px;
         }
+
+        /* Style the top navigation bar */
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        /* Style the navbar links */
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f0740e;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        /* Change color on hover */
+        .navbar a:hover {
+            background-color: #333333;
+            color: black;
+        }
+
+        /* Create three equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 40%;
+            padding: 15px;
+        }
+
+        /* Clear floats after the columns */
+        .row::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Center the columns */
+        .row {
+            display: flex;
+            justify-content: center;
+        }
+
+
+        /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+        @media screen and (max-width:600px) {
+        .column {
+            width: 100%;
+        }
+        }
       
     </style>
 </head>
 <body>
+    <div class="navbar">
+        <ul style="list-style: none;">
+            <li style="display: inline-block; margin-right: 10px;"><a href="https://www.error-404.dev/">Error-404 Web Development Agency LLC</a></li>
+            <li style="display: inline-block; margin-right: 10px;"><a href="https://www.linkedin.com/company/81305477/">LinkedIn</a></li>
+            <li style="display: inline-block; margin-right: 10px;"><a href="https://www.facebook.com/error404.dev">Facebook</a></li>
+            <li style="display: inline-block; margin-right: 10px;"><a href="https://www.instagram.com/error_404.dev/">Instagram</a></li>
+            <li style="display: inline-block; margin-right: 10px;"><a href="https://twitter.com/e404dev">Twitter</a></li>
+        </ul>
+    </div> <!-- navbar ends-->
     <banner style="text-align: center;">
         <h1>Error-404 Web Development Agency LLC</h1>
         
@@ -29,31 +88,51 @@
 
     <div style="text-align: center; border: 4px solid #333333; margin: 0 auto; width: 50%; margin-bottom: 20px;">
         <h2>Welcome to my portfolio page!</h2>
-        <p>I am the founder and CEO of Error-404 Web Development Agency LLC. This page was created to showcase my ablities as an
-            email marketing & web Development professional. I specialiaze in HTML, CSS, and JavaScript used to create enticing
-            marketing campains. Please take a look at soe of my wprk below.</p>
+        <p>I am the founder and CEO of Error-404 Web Development Agency LLC. This page was created to showcase my ablities as an email marketing & web Development professional. 
+            I specialiaze in HTML, CSS, and JavaScript used to create enticing marketing campains. Please take a look at some of my work below.  I have also attached a copy of my resume incase you are thinking of hireing me for a job or contracting opportunity.</p>
     </div>
 
-    <div style="text-align: center; border: 4px solid #333333; margin: 0 auto; width: 50%; height: auto; margin-bottom: 20px;">
+    <div style="text-align: center; border: 4px solid #333333; margin: 0 auto; width: 50%; height: auto; margin-bottom: 20px; padding-bottom: 10px; padding-top: 10px">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/b8eXfV5BO98" frameborder="0" allowfullscreen></iframe>
     </div>
 
-    
+    <!-- My work section starts-->
     <div style="text-align: center; border: 4px solid #333333; margin: 0 auto; width: 50%; margin-bottom: 20px;">
         <h2>My Work</h2>
-
-        <div>
-            <ul style="list-style: none;">
-                <li style="display: inline-block; margin-right: 10px;"><a href="https://www.error-404.dev/">Error-404 Web Development Agency LLC</a></li>
-                <li style="display: inline-block; margin-right: 10px;"><a href="https://www.linkedin.com/in/brandon-lee-1b1b1b1b1/">LinkedIn</a></li>
-                <li style="display: inline-block; margin-right: 10px;"><a href="https://www.facebook.com/brandon.lee.395017/">Facebook</a></li>
-                <li style="display: inline-block; margin-right: 10px;"><a href="https://www.instagram.com/brandonlee404/">Instagram</a></li>
-                <li style="display: inline-block; margin-right: 10px;"><a href="https://www.twitter.com/brandonlee404/">Twitter</a></li>
-            </ul>
+        
+        <div class="row">
+            <div class="column">
+                <img src="img/logo.png" alt="Error-404 Web Development Agency LLC Company Logo" style="width:25%">
+                <h2>Ecommece website</h2>
+                <p>This is my ecommece website. it was made with a mysql database to store customer info. 
+                    It also features a shopping cart with strip payment integration.</p>
+                    <button type="button" onclick="window.location.href='https://www.error-404.dev/'">View</button>
+            </div>
+            <div class="column">
+                <img src="img/logo.png" alt="Error-404 Web Development Agency LLC Company Logo" style="width:25%">
+                <h2>HTML Email Template</h2>
+                <p>This is my HTML Email Template. It has a dark and light mode toggle. The template also has various call to action buttons which open diffrent links.</p>
+                <button type="button" onclick="window.location.href='https://www.error-404.dev/'">View</button>
+            </div>
+            <div class="column">
+                <img src="img/logo.png" alt="Error-404 Web Development Agency LLC Company Logo" style="width:25%">
+                <h2>Ecommece website</h2>
+                <p>This is my ecommece website. it was made with a mysql database to store customer info. 
+                    It also features a shopping cart with strip payment integration.</p>
+                <button type="button" onclick="window.location.href='https://www.error-404.dev/'">View</button>
+            </div>
+            <div class="column">
+                <img src="img/logo.png" alt="Error-404 Web Development Agency LLC Company Logo" style="width:25%">
+                <h2>Ecommece website</h2>
+                <p>This is my ecommece website. it was made with a mysql database to store customer info. 
+                    It also features a shopping cart with strip payment integration.</p>
+                <button type="button" onclick="window.location.href='https://www.error-404.dev/'">View</button>
+            </div>
         </div>
         
+        
     </div>
-
+    <!-- My work section ends-->
     
     
     <!-- <ul>
@@ -64,30 +143,39 @@
         <li><a href="https://www.twitter.com/brandonlee404/">Twitter</a></li>
     </ul> -->
 
-    
-    
-    <div style="text-align: center; border: 4px solid #333333; margin: 0 auto; width: 50%; margin-bottom: 20px;">
-        <h2>Contact Me</h2>
-    <p>Please fill out the form below to contact me!</p>
-    
-    <form action="contact.php" method="post" style="width: 50%; margin: 0 auto; border: 4px solid #333333; padding: 20px; text-align: center;">
-
-        <label for="name" style="display: block;">Name:</label>
-        <input type="text" id="name" name="name" placeholder="Enter your name here" style="display: block; width: auto; padding: 10px; margin: 0 auto;">
-
-        <label for="email" style="display: block;">Email:</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email here" style="display: block; width: auto; padding: 10px; margin: 0 auto;">
-
-        <label for="subject" style="display: block;">Subject:</label>
-        <input type="text" id="subject" name="subject" placeholder="Enter your subject here" style="display: block; width: auto; padding: 10px; margin: 0 auto;">
-
-        <label for="message" style="display: block; ">Message:</label>
-        <textarea name="message" id="message" cols="30" rows="10" placeholder="Enter your message here" style="display: block; width: auto; padding: 10px; text-align: center; margin: 0 auto;"></textarea>
-        
-        <input type="submit" value="Send" style="display: block; margin-top: 10px; padding: 10px; background-color: #333333; color: #ffffff; border: none; cursor: pointer; margin: 0 auto;">
-    </form>
-    
+    <!--My resume section begins-->
+    <div style="text-align: center; border: 4px solid #333333; margin: 0 auto; width: 50%; margin-bottom: 20px; padding-bottom: 10px;">
+        <h2>My Resume</h2>
+        <p>Click the button below to download my resume!</p>
+        <button type="button" onclick="window.location.href='img/Brandon_Lee_Resume.pdf'">Download</button>
     </div>
+    <!--My resume section ends-->
+    
+    <div style="text-align: center; border: 4px solid #333333; margin: 0 auto; width: 50%; margin-bottom: 20px; padding-bottom: 10px">
+        <h2>Contact Me</h2>
+        <p>Please fill out the form below to contact me!</p>
+        
+        <form action="contact.php" method="post" style="width: 50%; margin: 0 auto; border: 4px solid #333333; padding: 10px; text-align: center; padding-bottom: 10px;">
+    
+            <label for="name" style="display: inline-block; margin-right: 10px; margin-bottom: 20px;">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name here" style="display: inline-block; width: auto; padding: 10px; margin: 0 auto;">
+            <br>
+    
+            <label for="email" style="display: inline-block; margin-right: 10px; margin-bottom: 20px;">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email here" style="display: inline-block; width: auto; padding: 10px; margin: 0 auto;">
+            <br>
+    
+            <label for="subject" style="display: inline-block; margin-right: 10px; margin-bottom: 20px;">Subject:</label>
+            <input type="text" id="subject" name="subject" placeholder="Enter your subject here" style="display: inline-block; width: auto; padding: 10px; margin: 0 auto;">
+            <br>
+    
+            <label for="message" style="display: inline-block; margin-right: 10px; ">Message:</label>
+            <textarea name="message" id="message" cols="30" rows="10" placeholder="Enter your message here" style="display: inline-block; width: auto; padding: 10px; text-align: center; margin: 0 auto;"></textarea>
+            
+            <input type="submit" value="Send" style="display: block; margin-top: 10px; padding: 10px; background-color: #333333; color: #ffffff; border: none; cursor: pointer; margin: 0 auto;">
+        </form>
+    </div>
+    
     
     <div style="text-align: center; border: 4px solid #333333; margin: 0 auto; width: 50%;">
         <footer style="font-size: small;">
