@@ -1,4 +1,8 @@
 <?php
+// Load environment variables from .env file
+require_once __DIR__ . '/vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 // Get the form data
 $name = $_POST['name'];
@@ -11,22 +15,62 @@ if (empty($name) || empty($email) || empty($message)) {
   die('Error: Please fill out all the required fields.');
 }
 
-// Store the data in a file
-$data = "$name|$email|$message\n";
-file_put_contents('contacts.txt', $data, FILE_APPEND);
+// Define the database credentials
+$servername = $_ENV['DB_HOST'];
+$username = $_ENV['DB_USERNAME'];
+$password = $_ENV['DB_PASSWORD'];
+$dbname = $_ENV['DB_DATABASE']; // This is for the database name not table name
 
-// Send an email notification
-$to = 'stephen@mcneilly.dev';
-$subject = 'New contact form submission for e404.dev';
-$headers = 'From: '.$name.' .
-           'Reply-To: '.$email.'\r\n' .
-           'CC: admin@dr460n4ir3.io' . "\r\n" .
-           'X-Mailer: PHP/' . phpversion();
+$conn = new mysqli($servername, $username, $password, $dbname);
+// NOTE REMEMBER TO CHANGE THE ABOVE TO YOUR OWN DATABASE CREDENTIALS
 
-$txt = 'You have received a message from '.$name .' Email: ' .$email .' Message: ' .$message;
-mail($to, $subject, $txt, $headers);
+// Check the connection
+if ($conn->connect_error) {
+    die('Connection failed: ' . $conn->connect_error);
+}
 
-// Redirect the user to a thank you page
-header('Location: thank-you.html');
-exit;
+// define a function to insert data into the database
+function insertData($name, $email, $subject, $message) {
+    global $conn; // reference the global database connection variable
+    
+    // prepare the SQL query
+    $sql = "INSERT INTO contact_form (name, email, subject, message) VALUES (?, ?, ?, ?)"; // NOTE: contact_form is the table name
+    $stmt = mysqli_prepare($conn, $sql);
+    
+    // bind the parameters to the query
+    mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $subject, $message);
+    
+    // execute the query
+    mysqli_stmt_execute($stmt);
+    
+    // check if the query was successful
+    if (mysqli_stmt_affected_rows($stmt) > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
+
+// Call the insertData function
+if (insertData($name, $email, $subject, $message)) {
+    // Send an email notification
+    $to = 'stephen@mcneilly.dev';
+    $subject = 'New contact form submission for e404.dev';
+    $headers = 'From: '.$name.' ' .
+            'Reply-To: '.$email.'\r\n' .
+            'CC: admin@dr460n4ir3.io' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+
+    $txt = 'You have received a message from '.$name .' Email: ' .$email .' Message: ' .$message;
+    mail($to, $subject, $txt, $headers);
+
+    // Redirect the user to a thank you page
+    header('Location: thank-you.html');
+    exit;
+} else {
+    echo 'Error: Unable to insert data into the database.';
+}
+
+// close the database connection
+mysqli_close($conn);
