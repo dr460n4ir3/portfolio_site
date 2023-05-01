@@ -67,7 +67,7 @@ function storeData($name, $email, $subject, $message) {
     );
 
     // Encode the updated data and write it back to the file
-    $updatedData = json_encode($dataArray);
+    $updatedData = json_encode($dataArray, JSON_PRETTY_PRINT);
     file_put_contents($file, $updatedData);
 }
 
