@@ -53,16 +53,24 @@ function insertData($name, $email, $subject, $message) {
 
 // create a function to store data in a json file
 function storeData($name, $email, $subject, $message) {
-    $data = array(
+    // Read existing data from the file
+    $file = 'contact-form-data.json';
+    $existingData = file_get_contents($file);
+
+    // Decode existing data and add the new data
+    $dataArray = json_decode($existingData, true);
+    $dataArray[] = array(
         'name' => $name,
         'email' => $email,
         'subject' => $subject,
         'message' => $message
     );
-    $data = json_encode($data);
-    $file = 'contact-form-data.json';
-    file_put_contents($file, $data);
+
+    // Encode the updated data and write it back to the file
+    $updatedData = json_encode($dataArray);
+    file_put_contents($file, $updatedData);
 }
+
 
 // Store the form data in a JSON file
 storeData($name, $email, $subject, $message);
