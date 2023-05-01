@@ -51,6 +51,21 @@ function insertData($name, $email, $subject, $message) {
     }
 }
 
+// create a function to store data in a json file
+function storeData($name, $email, $subject, $message) {
+    $data = array(
+        'name' => $name,
+        'email' => $email,
+        'subject' => $subject,
+        'message' => $message
+    );
+    $data = json_encode($data);
+    $file = 'contact-form-data.json';
+    file_put_contents($file, $data);
+}
+
+// Store the form data in a JSON file
+storeData($name, $email, $subject, $message);
 
 // Call the insertData function
 if (insertData($name, $email, $subject, $message)) {
